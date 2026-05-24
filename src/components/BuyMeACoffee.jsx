@@ -1,7 +1,7 @@
 export default function BuyMeACoffee() {
     return (
         <div className="mt-4 flex items-center justify-center gap-3 py-4 text-slate-500 text-sm">
-            <span>If this tool helped you out —</span>
+            <span>Found this useful? Support the work —</span>
             <a
                 href="https://coff.ee/daryltadss8"
                 target="_blank"

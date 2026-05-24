@@ -1,8 +1,10 @@
 ﻿import React, { useState, useCallback, useMemo } from 'react';
 import {
   Copy, RefreshCw, Shield, ShieldCheck, ShieldAlert, ShieldX,
-  Eye, EyeOff, Check, Zap, Lock, Code, Heart, Download, History, Trash2, ChevronDown
+  Eye, EyeOff, Check, Zap, Lock, Code, Heart, Download, History, Trash2, ChevronDown, Mail
 } from 'lucide-react';
+import BuyMeACoffee from './BuyMeACoffee';
+import ContactModal from './ContactModal';
 
 // Log-scale helpers: maps 0-100 slider ↔ 4-128 length (powers of 2 evenly spaced)
 const sliderToLength = (s) => Math.round(4 * Math.pow(32, s / 100));
@@ -36,6 +38,7 @@ const PasswordGenerator = () => {
   const [bulkPasswords, setBulkPasswords] = useState([]);
   const [bulkCopied, setBulkCopied] = useState(null);
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const [showContact, setShowContact] = useState(false);
 
   const buildCharset = useCallback((opts) => {
     let charset = '';
@@ -474,6 +477,27 @@ const PasswordGenerator = () => {
         </div>
       </main>
 
+      {/* Collab CTA */}
+      <div className="max-w-4xl mx-auto px-6 mt-6">
+        <div className="rounded-2xl border border-purple-500/30 bg-gradient-to-r from-purple-900/30 to-pink-900/20 px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <p className="text-white font-semibold text-base">👋 Got an idea or need a developer?</p>
+            <p className="text-slate-400 text-sm mt-0.5">I'm open to freelance work, collaborations, and full-time opportunities.</p>
+          </div>
+          <button
+            onClick={() => setShowContact(true)}
+            className="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-sm shadow-lg shadow-purple-900/40 transition-all"
+          >
+            <Mail className="w-4 h-4" />
+            Get in Touch
+          </button>
+        </div>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6">
+        <BuyMeACoffee />
+      </div>
+
       {/* Footer */}
       <footer className="bg-slate-950 border-t border-slate-800 mt-12">
         <div className="max-w-4xl mx-auto px-6 py-8">
@@ -526,6 +550,8 @@ const PasswordGenerator = () => {
           </div>
         </div>
       </footer>
+
+      <ContactModal isOpen={showContact} onClose={() => setShowContact(false)} />
     </div>
   );
 };

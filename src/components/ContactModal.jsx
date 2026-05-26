@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { X, Send, Check, Loader, Mail } from 'lucide-react';
+import { X, Send, Check, Loader, Mail, User, MessageSquare } from 'lucide-react';
 
 export default function ContactModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -85,7 +85,7 @@ export default function ContactModal({ isOpen, onClose }) {
         </div>
 
         {/* Body */}
-        <div className="px-6 py-5">
+        <div className="px-6 py-5 text-left">
           {formStatus === 'success' ? (
             <div className="text-center py-8">
               <div className="w-14 h-14 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -103,7 +103,9 @@ export default function ContactModal({ isOpen, onClose }) {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1.5">Name</label>
+                <label className="block text-sm font-medium text-slate-300 mb-1.5">
+                  <User className="w-3.5 h-3.5 inline mr-1.5" />Name
+                </label>
                 <input
                   type="text"
                   name="name"
@@ -115,7 +117,9 @@ export default function ContactModal({ isOpen, onClose }) {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1.5">Email</label>
+                <label className="block text-sm font-medium text-slate-300 mb-1.5">
+                  <Mail className="w-3.5 h-3.5 inline mr-1.5" />Email
+                </label>
                 <input
                   type="email"
                   name="email"
@@ -127,7 +131,9 @@ export default function ContactModal({ isOpen, onClose }) {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1.5">Message</label>
+                <label className="block text-sm font-medium text-slate-300 mb-1.5">
+                  <MessageSquare className="w-3.5 h-3.5 inline mr-1.5" />Message
+                </label>
                 <textarea
                   name="message"
                   value={formData.message}

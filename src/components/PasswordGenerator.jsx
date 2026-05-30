@@ -177,8 +177,8 @@ const PasswordGenerator = () => {
           <div className="flex items-center gap-3">
             <Lock className="w-7 h-7 text-purple-400" />
             <div className="text-left">
-              <h1 className="text-xl font-bold text-white leading-tight">Password Generator Pro</h1>
-              <p className="text-xs text-slate-400">Cryptographically secure passwords</p>
+              <h1 className="text-xl font-bold text-white leading-tight">Free Password Generator</h1>
+              <p className="text-xs text-slate-400">Cryptographically secure — runs 100% in your browser</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
